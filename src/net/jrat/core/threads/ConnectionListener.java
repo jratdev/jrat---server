@@ -27,6 +27,7 @@ public class ConnectionListener implements Runnable
 			try
 			{
 				final Socket socket = this.listener.serverSocket.accept();
+				socket.setKeepAlive(true);
 				
 				final ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
 				final ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());

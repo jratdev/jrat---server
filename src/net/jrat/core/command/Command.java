@@ -1,5 +1,7 @@
 package net.jrat.core.command;
 
+import org.apache.commons.cli.CommandLine;
+
 import net.jrat.core.Server;
 
 public abstract class Command
@@ -19,5 +21,5 @@ public abstract class Command
 		this.description = description;
 	}
 	
-	public abstract void execute(String[] arguments) throws Exception;
+	public abstract void execute(CommandLine commandLine) throws Exception;
 }

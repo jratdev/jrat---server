@@ -1,20 +1,21 @@
 package net.jrat.core.command.commands;
 
+import org.apache.commons.cli.CommandLine;
+
 import net.jrat.core.command.Command;
-import net.jrat.utils.Formatter;
 import net.jrat.utils.Logger;
 
 public class Help extends Command
 {
 	public Help()
 	{
-		super("help", new String[] { "-command" }, new String[] { "sets the command" }, "shows you some help");
+		super("help", new String[] { "command" }, new String[] { "sets the command" }, "shows you some help");
 	}
 
 	@Override
-	public void execute(String[] arguments) throws Exception
+	public void execute(CommandLine commandLine) throws Exception
 	{
-		final String commandName = Formatter.getValue(arguments, "-command=").defaultTo(null);
+		final String commandName = commandLine.getOptionValue("command", null);
 		
 		if(commandName == null)
 		{
@@ -24,7 +25,7 @@ public class Help extends Command
 				
 				for(Command command : this.server.commandManager.commands)
 				{
-					final String line = command.name + " - " + command.description + " | type \"help -command=" + command.name + "\" for more information";
+					final String line = command.name + " - " + command.description + " | type \"help -command " + command.name + "\" for more information";
 					Logger.log(line);
 				}
 				
@@ -35,6 +36,9 @@ public class Help extends Command
 		else
 		{
 			final Command command = this.server.commandManager.getCommand(commandName);
+			
+			if(command == null)
+				throw new Exception("command not found");
 			
 			Logger.log("showing help for " + command.name);
 			{

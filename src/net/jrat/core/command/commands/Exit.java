@@ -1,5 +1,7 @@
 package net.jrat.core.command.commands;
 
+import org.apache.commons.cli.CommandLine;
+
 import net.jrat.core.command.Command;
 import net.jrat.utils.Logger;
 
@@ -11,7 +13,7 @@ public class Exit extends Command
 	}
 
 	@Override
-	public void execute(String[] arguments) throws Exception
+	public void execute(CommandLine commandLine) throws Exception
 	{
 		Logger.log("shutting down...");
 		this.server.running = false;
