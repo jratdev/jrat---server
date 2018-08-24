@@ -1,0 +1,71 @@
+package net.jrat.core.threads;
+
+import java.io.EOFException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+import net.jrat.core.Server;
+import net.jrat.core.connection.Connection;
+import net.jrat.core.listener.Listener;
+import net.jrat.core.packet.IPacket;
+import net.jrat.utils.Logger;
+
+public class ActionListener implements Runnable
+{
+	private final Server server = Server.instance;
+	
+	private Socket socket;
+	private ObjectInputStream inputStream;
+	private ObjectOutputStream outputStream;
+	
+	private Listener listener;
+	
+	public ActionListener(Listener listener, Socket socket, ObjectInputStream inputStream, ObjectOutputStream outputStream)
+	{
+		this.listener = listener;
+		
+		this.socket = socket;
+		this.inputStream = inputStream;
+		this.outputStream = outputStream;
+	}
+	
+	@Override
+	public void run()
+	{
+		final Connection connection = new Connection(this.socket, this.inputStream, this.outputStream);
+		this.listener.connections.add(connection);
+		
+		try
+		{
+			while(!(this.socket.isClosed()) && this.server.running)
+			{
+				final Object input = this.inputStream.readObject();
+				
+				try
+				{
+					if(input instanceof IPacket)
+					{
+						final IPacket packet = (IPacket) input;
+						packet.execute(connection);
+					}
+				}
+				catch(Exception e)
+				{
+					Logger.warn("could not handle packet: " + e.getMessage());
+					e.printStackTrace();
+				}
+			}
+			
+			Logger.log("connection closed");
+			this.listener.connections.remove(connection);
+		}
+		catch(Exception e)
+		{
+			if(!(e instanceof EOFException) && !(e.getMessage().equals("Connection reset")))
+				Logger.err("could not handle connection: " + e.getMessage());
+			
+			this.listener.connections.remove(connection);
+		}
+	}
+}
