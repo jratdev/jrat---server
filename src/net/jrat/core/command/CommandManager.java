@@ -9,6 +9,7 @@ import net.jrat.core.command.commands.Exit;
 import net.jrat.core.command.commands.Help;
 import net.jrat.core.command.commands.SetConnection;
 import net.jrat.core.command.commands.ToggleListener;
+import net.jrat.core.command.commands.connection.ShowMessage;
 
 public class CommandManager
 {
@@ -28,6 +29,8 @@ public class CommandManager
 		this.commands.add(new ConnectionInfo());
 		this.commands.add(new SetConnection());
 		this.commands.add(new Exit());
+		
+		this.commands.add(new ShowMessage());
 	}
 	
 	public Command getCommand(String name)
