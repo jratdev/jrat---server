@@ -91,11 +91,7 @@ public class CommandListener implements Runnable
 				
 				final String[] arguments = new String[argList.size()];
 				for(int i = 0; i < arguments.length; i++)
-				{
 					arguments[i] = argList.get(i);
-					
-					System.out.println(arguments[i]);
-				}
 				
 				final CommandLineParser parser = new DefaultParser();
 				final CommandLine commandLine = parser.parse(options, arguments);
