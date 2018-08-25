@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 import net.jrat.core.packet.IPacket;
 import net.jrat.utils.Logger;
+import net.jrat.utils.Variables;
 
 public class C2PacketDownload implements IPacket
 {
@@ -32,5 +33,7 @@ public class C2PacketDownload implements IPacket
 		Logger.space();
 		Logger.log("downloaded file: " + this.outputpath);
 		Logger.space();
+		
+		System.out.print(Variables.instance.appname + " -> ");
 	}
 }
