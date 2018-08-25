@@ -16,6 +16,6 @@ public class Exit extends Command
 	public void execute(CommandLine commandLine) throws Exception
 	{
 		Logger.log("shutting down...");
-		this.server.running = false;
+		this.server.shutdown();
 	}
 }

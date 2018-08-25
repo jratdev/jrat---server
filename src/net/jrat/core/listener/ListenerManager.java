@@ -3,8 +3,11 @@ package net.jrat.core.listener;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 public class ListenerManager
 {
+	@Expose
 	public List<Listener> listeners;
 	
 	public ListenerManager()

@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="libraries/commons/commons-cli-1.4.jar"/>
 	<classpathentry kind="lib" path="libraries/jsap/JSAP-2.1.jar"/>
 	<classpathentry kind="lib" path="libraries/javassist/javassist.jar"/>
+	<classpathentry kind="lib" path="libraries/gson/gson.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
