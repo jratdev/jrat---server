@@ -1,5 +1,7 @@
 package net.jrat.utils;
 
+import java.io.File;
+
 public class Variables
 {
 	public static Variables instance;
@@ -10,14 +12,18 @@ public class Variables
 	public String appname;
 	public float version;
 	
+	public String workDir;
+	
 	public void setup()
 	{
 		instance = this;
 
-		author = "paolo v.";
-		company = "aragon inc.";
+		this.author = "paolo v.";
+		this.company = "aragon inc.";
 
-		appname = "jrat";
-		version = 0.01F;
+		this.appname = "jrat";
+		this.version = 0.01F;
+		
+		this.workDir = System.getProperty("user.dir") + File.separator;
 	}
 }

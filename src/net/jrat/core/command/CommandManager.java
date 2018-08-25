@@ -6,6 +6,7 @@ import java.util.List;
 import net.jrat.core.command.commands.AddListener;
 import net.jrat.core.command.commands.ConnectionInfo;
 import net.jrat.core.command.commands.Exit;
+import net.jrat.core.command.commands.ExportFile;
 import net.jrat.core.command.commands.Help;
 import net.jrat.core.command.commands.SetConnection;
 import net.jrat.core.command.commands.ToggleListener;
@@ -28,6 +29,7 @@ public class CommandManager
 		this.commands.add(new ToggleListener());
 		this.commands.add(new ConnectionInfo());
 		this.commands.add(new SetConnection());
+		this.commands.add(new ExportFile());
 		this.commands.add(new Exit());
 		
 		this.commands.add(new ShowMessage());

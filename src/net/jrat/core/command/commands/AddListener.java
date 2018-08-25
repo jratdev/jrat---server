@@ -10,7 +10,7 @@ public class AddListener extends Command
 {
 	public AddListener()
 	{
-		super("addlistener", new String[] { "name", "addr", "port" }, new String[] { "sets the name", "sets the address", "sets the port" }, "crates a new connection listener");
+		super("addlistener", new String[] { "name", "addr", "port" }, new String[] { "sets the name", "sets the address", "sets the port" }, "creates a new connection listener");
 	}
 
 	@Override

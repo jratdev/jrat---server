@@ -36,6 +36,8 @@ public class ActionListener implements Runnable
 		final Connection connection = new Connection(this.socket, this.inputStream, this.outputStream);
 		this.listener.connections.add(connection);
 		
+		Logger.log("new connection: " + connection.socket.getInetAddress().getHostAddress());
+		
 		try
 		{
 			while(!(this.socket.isClosed()) && this.server.running)
@@ -65,6 +67,10 @@ public class ActionListener implements Runnable
 			if(!(e instanceof EOFException) && !(e.getMessage().equals("Connection reset")))
 				Logger.err("could not handle connection: " + e.getMessage());
 			
+			if(this.server.currentConnection == connection)
+				this.server.currentConnection = null;
+
+			Logger.log("connection closed: " + connection.informations.username);
 			this.listener.connections.remove(connection);
 		}
 	}
