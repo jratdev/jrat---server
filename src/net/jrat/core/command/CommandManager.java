@@ -9,6 +9,8 @@ import net.jrat.core.command.commands.Exit;
 import net.jrat.core.command.commands.ExportFile;
 import net.jrat.core.command.commands.Help;
 import net.jrat.core.command.commands.ToggleListener;
+import net.jrat.core.command.commands.connection.Beep;
+import net.jrat.core.command.commands.connection.Download;
 import net.jrat.core.command.commands.connection.Execute;
 import net.jrat.core.command.commands.connection.OpenWeb;
 import net.jrat.core.command.commands.connection.SetConnection;
@@ -38,6 +40,8 @@ public class CommandManager
 		this.commands.add(new ShowMessage());
 		this.commands.add(new Execute());
 		this.commands.add(new OpenWeb());
+		this.commands.add(new Beep());
+		this.commands.add(new Download());
 		
 		this.commands.add(new Uninstall());
 	}

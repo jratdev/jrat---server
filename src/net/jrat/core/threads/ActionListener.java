@@ -9,6 +9,7 @@ import net.jrat.core.connection.Connection;
 import net.jrat.core.listener.Listener;
 import net.jrat.core.packet.IPacket;
 import net.jrat.utils.Logger;
+import net.jrat.utils.Variables;
 
 public class ActionListener implements Runnable
 {
@@ -37,6 +38,7 @@ public class ActionListener implements Runnable
 		
 		Logger.space();
 		Logger.log("new connection: " + connection.socket.getInetAddress().getHostAddress());
+		System.out.print(Variables.instance.appname + " -> ");
 		
 		try
 		{
@@ -71,6 +73,8 @@ public class ActionListener implements Runnable
 			
 			Logger.space();
 			Logger.log("connection closed: " + connection.informations.username);
+			System.out.print(Variables.instance.appname + " -> ");
+			
 			this.listener.connections.remove(connection);
 		}
 	}
