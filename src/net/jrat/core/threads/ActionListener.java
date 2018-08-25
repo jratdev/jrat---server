@@ -62,13 +62,12 @@ public class ActionListener implements Runnable
 		}
 		catch(Exception e)
 		{
-			if(!(e.getMessage().equals("Connection reset")) && !(e.getMessage().equals("Socket closed")))
+			if(!(e.getMessage() == null) && !(e.getMessage().equals("Connection reset")) && !(e.getMessage().equals("Socket closed")))
 				Logger.err("could not handle connection: " + e.getMessage());
 			
 			if(this.server.currentConnection == connection)
 				this.server.currentConnection = null;
 			
-			Logger.space();
 			Logger.log("connection closed: " + connection.informations.username);
 			this.listener.connections.remove(connection);
 		}

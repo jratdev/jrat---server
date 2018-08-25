@@ -99,7 +99,6 @@ public class CommandListener implements Runnable
 			}
 			catch(Exception e)
 			{
-				Logger.space();
 				Logger.err("could not handle command: " + e.getMessage());
 			}
 			
