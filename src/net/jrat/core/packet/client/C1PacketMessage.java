@@ -3,6 +3,7 @@ package net.jrat.core.packet.client;
 import net.jrat.core.connection.Connection;
 import net.jrat.core.packet.IPacket;
 import net.jrat.utils.Logger;
+import net.jrat.utils.Variables;
 
 public class C1PacketMessage implements IPacket
 {
@@ -21,15 +22,15 @@ public class C1PacketMessage implements IPacket
 		final Connection connection = (Connection) object;
 		
 		Logger.space();
-		Logger.log("message from " + connection.informations.username);
-		{
-			Logger.startFrequence();
-			
-			Logger.log(this.message);
-			
-			Logger.stopFrequence();
-		}
-		Logger.log("message from " + connection.informations.username);
+		
+		Logger.log("recived message from " + connection.informations.username);
+		System.out.println("------------------------------------------------------------");
+		System.out.println(this.message);
+		System.out.println("------------------------------------------------------------");
+		Logger.log("end message");
+		
 		Logger.space();
+
+		System.out.print(Variables.instance.appname + " -> ");
 	}
 }

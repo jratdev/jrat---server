@@ -35,6 +35,7 @@ public class ActionListener implements Runnable
 		final Connection connection = new Connection(this.socket, this.inputStream, this.outputStream);
 		this.listener.connections.add(connection);
 		
+		Logger.space();
 		Logger.log("new connection: " + connection.socket.getInetAddress().getHostAddress());
 		
 		try
@@ -68,6 +69,7 @@ public class ActionListener implements Runnable
 			if(this.server.currentConnection == connection)
 				this.server.currentConnection = null;
 			
+			Logger.space();
 			Logger.log("connection closed: " + connection.informations.username);
 			this.listener.connections.remove(connection);
 		}

@@ -80,8 +80,11 @@ public class Server
 		{
 			listener.stopThread();
 			
-			for(ActionListener actionListener : listener.listener.listeners)
-				actionListener.close();
+			if(!(listener.listener == null))
+			{
+				for(ActionListener actionListener : listener.listener.listeners)
+					actionListener.close();
+			}
 		}
 		
 		this.running = false;
