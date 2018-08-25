@@ -23,11 +23,22 @@ public class Help extends Command
 			{
 				Logger.startFrequence();
 				
-				for(Command command : this.server.commandManager.commands)
+				for(int i = 0; i < this.server.commandManager.commands.size(); i++)
 				{
+					final Command command = this.server.commandManager.commands.get(i);
 					final String line = command.name + " - " + command.description + " | type \"help -command " + command.name + "\" for more information";
 					Logger.log(line);
+					
+					if(i == 5)
+					{
+						Logger.space();
+						Logger.log("connection commands");
+						Logger.startFrequence();
+					}
 				}
+				
+				Logger.stopFrequence();
+				Logger.log("connection commands");
 				
 				Logger.stopFrequence();
 			}
