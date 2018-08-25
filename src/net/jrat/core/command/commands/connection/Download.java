@@ -26,8 +26,7 @@ public class Download extends Command
 		if(fpath == null)
 			throw new Exception("filepath is needed");
 		
-		final String opath = commandLine.getOptionValue("opath", Variables.instance.workDir + "downloads" + File.separator + new File(fpath).getName());
-		
+		final String opath = commandLine.getOptionValue("opath", Variables.instance.workDir + "downloads" + File.separator + "downloaded.file");
 		this.server.currentConnection.outputStream.writeObject(new S6PacketDownload(fpath, opath));
 	}
 }
