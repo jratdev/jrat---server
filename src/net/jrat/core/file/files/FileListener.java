@@ -24,10 +24,12 @@ public class FileListener extends File
 	{
 		final ListenerManager manager = (ListenerManager) this.read(ListenerManager.class);
 		
-		for(Listener listener : manager.listeners)
-			listener.setup();
-		
 		if(!(manager == null))
+		{
+			for(Listener listener : manager.listeners)
+				listener.setup();
+			
 			this.server.listenerManager = manager;
+		}
 	}
 }
