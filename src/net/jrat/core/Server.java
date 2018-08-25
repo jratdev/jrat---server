@@ -43,7 +43,6 @@ public class Server
 			catch (Exception e)
 			{
 				Logger.warn("could not load file: " + e.getMessage());
-				e.printStackTrace();
 			}
 		}
 		
