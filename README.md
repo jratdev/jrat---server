@@ -1,17 +1,11 @@
 # JRat
 > A simple java RAT which you can use to control other computers
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 ## Installation
 
-OSX X & Linux & Windows
+OS
 
-```sh
-java -jar server.jar
-````
+`java -jar server.jar`
 
 ## Release History
 
