@@ -13,7 +13,7 @@
    - java -cp server.jar net.jrat.Bootstrap
 ```
 
-## Release History
+## Releases
 
 * 0.0.2
     * Mach hier iwelche devlogs lol
