@@ -4,9 +4,9 @@
 ## Installation
 
 MacOSX & Linux & Windows
-`
+```
 java -jar server.jar
-`
+```
 
 ## Release History
 
