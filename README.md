@@ -3,7 +3,10 @@
 
 ## Installation
 
-Runnable on: ###MacOSX & Linux & Windows
+### Runnable on:
+>  - Mac OSX
+   - Linux
+   - Windows
 
 ```
    - java -jar server.jar
