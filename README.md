@@ -16,6 +16,13 @@
 ## Releases
 
 * 0.0.1
+```
+   Changelog:
+      - Created Server base
+      - Added many Functions
+   
+   Download: <DOWNLOADLINK>
+```
 
 ## Meta 
 
