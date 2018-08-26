@@ -4,8 +4,10 @@
 ## Installation
 
 MacOSX & Linux & Windows
+
 ```
-java -jar server.jar
+   - java -jar server.jar
+   - java -cp server.jar net.jrat.Bootstrap
 ```
 
 ## Release History
