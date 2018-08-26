@@ -3,9 +3,10 @@
 
 ## Installation
 
-OS
-
-`java -jar server.jar`
+MacOSX & Linux & Windows
+`
+java -jar server.jar
+`
 
 ## Release History
 
