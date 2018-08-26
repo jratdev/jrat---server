@@ -29,7 +29,7 @@ public class Help extends Command
 					final String line = command.name + " - " + command.description + " | type \"help -command " + command.name + "\" for more information";
 					Logger.log(line);
 					
-					if(i == 5)
+					if(i == 6)
 					{
 						Logger.space();
 						Logger.log("connection commands");

