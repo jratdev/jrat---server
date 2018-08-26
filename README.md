@@ -5,8 +5,8 @@
 
 ### Runnable on:
 >  - Mac OSX
-   - Linux
-   - Windows
+>  - Linux
+>  - Windows
 
 ```
    - java -jar server.jar
