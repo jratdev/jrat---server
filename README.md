@@ -19,5 +19,8 @@ MacOSX & Linux & Windows
 * 0.0.1 - [Download](https://github.com/jratdev/server/releases/download/0.0.1/jrat_v0.0.1.zip)
     - Started to create Project
 
+* 0.0.2 - [Download](https://github.com/jratdev/server/releases/download/0.0.2/jrat_v0.0.2.zip)
+    - Added new Functions like tkscreen or tkcam
+
 ## Authors
 * **Paolo V.** - [GitHub](https://github.com/jratdev/)
