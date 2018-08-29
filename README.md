@@ -5,8 +5,6 @@
 JRat is a Remote Administration Tool programmed in Java. <br>
 It's command based, which means it does not have a User Interface, <br>
 do you can use it on every vserver.
-It's programmed by a 16 years old kid, who had fun to <br>
-create this project.
 
 ### Installation
 MacOSX & Linux & Windows
